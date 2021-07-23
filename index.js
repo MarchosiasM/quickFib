@@ -1,16 +1,19 @@
 
 // classic recursive fib, runs the risk of blowing the relatively small stack in JS
 const recursFib = (n) => {
-    if (n < 4) return n;
+    // if (n < 4) return n;
+    if (n === 1) return 0
+    if (n === 2) return 1
 
     return recursFib(n - 1) + recursFib(n - 2)
 } 
 
 const declareFib = (n) => {
-    if (n < 4) return n;
+    if (n === 1) return 0
+    if (n === 2) return 1
 
-    const fibonacciBucket = [3, 2] // 3rd and 2nd fib numbers for later sum
-    for (let i = 3; i < n; i++) {
+    const fibonacciBucket = [1, 0] // 3rd and 2nd fib numbers for later sum
+    for (let i = 2; i < n; i++) {
         // the fibonacci number is the sum of the last two fibonacci numbers
         fibonacciBucket.unshift(fibonacciBucket[0] + fibonacciBucket[1]); // add it to the front of the bucket
     }
