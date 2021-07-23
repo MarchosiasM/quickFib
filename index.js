@@ -25,17 +25,14 @@ const declareFib = (n) => {
 // we can greatly improve the performance of either fib by adding a memo
 const fibMemo = {
     0: 0,
-    1: 1,
-    2: 2,
-    3: 3
+    1: 1
 }
 const memoFib = (n) => {
-    if (n < 4) return n;
     if (fibMemo[n]) return fibMemo[n]
-    const fibonacciBucket = [3, 2] // 3rd and 2nd fib numbers for later sum
-    for (let i = 3; i < n; i++) {
+    const fibonacciBucket = [1, 0] // 3rd and 2nd fib numbers for later sum
+    for (let i = 2; i < n; i++) {
         // the fibonacci number is the sum of the last two fibonacci numbers
-        fibonacciBucket.unshift(fibonacciBucket[0] + fibonacciBucket[1]); // add it to the front of the bucket
+        fibonacciBucket.unshift(fibMemo[i] || fibonacciBucket[0] + fibonacciBucket[1]); // add it to the front of the bucket
         if (!fibMemo[i]) fibMemo[i] = fibonacciBucket[0]; // fills out the fibMemo as we go, improving the runtime over time
     }
 
