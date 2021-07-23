@@ -1,7 +1,6 @@
 
 // classic recursive fib, runs the risk of blowing the relatively small stack in JS
 const recursFib = (n) => {
-    // if (n < 4) return n;
     if (n === 1) return 0
     if (n === 2) return 1
 
@@ -12,13 +11,11 @@ const declareFib = (n) => {
     if (n === 1) return 0
     if (n === 2) return 1
 
-    const fibonacciBucket = [1, 0] // 3rd and 2nd fib numbers for later sum
+    const fibonacciBucket = [1, 0] 
     for (let i = 2; i < n; i++) {
-        // the fibonacci number is the sum of the last two fibonacci numbers
-        fibonacciBucket.unshift(fibonacciBucket[0] + fibonacciBucket[1]); // add it to the front of the bucket
+        fibonacciBucket.unshift(fibonacciBucket[0] + fibonacciBucket[1]); 
     }
 
-    // when we've hit our desired number, return the last sum
     return fibonacciBucket[0];
 }
 
@@ -29,14 +26,12 @@ const fibMemo = {
 }
 const memoFib = (n) => {
     if (fibMemo[n]) return fibMemo[n]
-    const fibonacciBucket = [1, 0] // 3rd and 2nd fib numbers for later sum
+    const fibonacciBucket = [1, 0] 
     for (let i = 2; i < n; i++) {
-        // the fibonacci number is the sum of the last two fibonacci numbers
-        fibonacciBucket.unshift(fibMemo[i] || fibonacciBucket[0] + fibonacciBucket[1]); // add it to the front of the bucket
-        if (!fibMemo[i]) fibMemo[i] = fibonacciBucket[0]; // fills out the fibMemo as we go, improving the runtime over time
+        fibonacciBucket.unshift(fibMemo[i] || fibonacciBucket[0] + fibonacciBucket[1]); 
+        if (!fibMemo[i]) fibMemo[i] = fibonacciBucket[0];
     }
 
-    // when we've hit our desired number, return the last sum
     return fibonacciBucket[0];
 }
 
