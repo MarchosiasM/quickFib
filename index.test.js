@@ -31,6 +31,7 @@ describe('fibs', () => {
     `('fib', ({input, solution}) => {
         expect(declareFib(input)).toBe(solution)
     })
+    // because this executes sometimes in sub ms time, this test is not determistic but it was a decent shot without using a profiler
     it('memoFib should run faster on subsequent runs', () => {
         const firstRunStart = Date.now();
         console.time("Function #1")
