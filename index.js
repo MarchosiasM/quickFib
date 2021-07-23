@@ -40,4 +40,4 @@ const memoFib = (n) => {
     return fibonacciBucket[0];
 }
 
-module.exports = {recursFib, declareFib};
+module.exports = {recursFib, declareFib, memoFib};
